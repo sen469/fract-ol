@@ -19,31 +19,58 @@ int	ft_isdigit(int c)
 }
 */
 
+static int	ft_nbrlen(long n)
+{
+	int	i;
+
+	i = 0;
+	if (n < 0)
+	{
+		n *= -1;
+		i++;
+	}
+	else if (n == 0)
+		return (1);
+	while (n > 0)
+	{
+		i++;
+		n /= 10;
+	}
+	return (i);
+}
+
 double	ft_atof(const char *str)
 {
+	double	i;
 	double	res;
-	int		flag;
-	int		ten;
-	int		i;
 
-	res = 0;
-	i = 0;
-	flag = 1;
-	ten = 1;
-	while (str[i])
+	i = 0.1;
+	res = ft_atoi(str);
+	while (*str != '.')
+		str++;
+	printf("len = %d, %s\n",ft_nbrlen(res), str);
+	if (*str == '.')
 	{
-		if (str[i] == '.')
-			flag = 0;
-		else if (!ft_isdigit(str[i]))
-			continue;
-		else if (flag)
-			res = res * 10 + (str[i] - '0');
+		while (ft_isdigit(*(++str)))
+		{
+			res += ((*str) - '0') * i;
+			i /= 10;
+		}
+	}
+	else if (*str == 'e' || *str == 'E')
+	{
+		i = ft_atoi(++str);
+		if (i < 0)
+		{
+			while (i++)
+				res /= 10;
+		}
 		else
 		{
-			ten *= 10;
-			res = res + ((double)(str[i] - '0') / ten);
+			// else がいらない説ある
+			while (i--)
+				res *= 10;
 		}
-		i++;
 	}
 	return (res);
 }

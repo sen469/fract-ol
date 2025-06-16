@@ -7,12 +7,16 @@ NAME        = fractol
 LIBFT       = ./incs/libft/libft.a
 LIBFT_DIR   = ./incs/libft
 
+MLX         = ./incs/mlx/libmlx.a
+MLX_DIR      = ./incs/mlx/
+
 ########################################
 #        Compiler Configuration        #
 ########################################
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror
+MLX_FLAGS = -lXext -lX11 -lm -lbsd
 INCLUDES    = -I./includes -I$(LIBFT_DIR)
 
 ########################################
@@ -20,6 +24,12 @@ INCLUDES    = -I./includes -I$(LIBFT_DIR)
 ########################################
 
 SRC = \
+	  srcs/input_init.c \
+	  srcs/main.c \
+	  srcs/utils/complex_multiple.c \
+	  srcs/utils/ft_atof.c \
+	  srcs/mandelbrot/mandelbrot.c
+
 
 BONUS_SRC = \
 
@@ -34,9 +44,8 @@ B_OBJ   = $(BONUS_SRC:.c=.o)
 all: $(NAME)
 
 # ライブラリ作成: 通常 + bonusもまとめてアーカイブ
-$(NAME): $(LIBFT) $(OBJ) $(B_OBJ)
-	cp $(LIBFT) $(NAME)
-	ar rcs $(NAME) $(OBJ) $(B_OBJ)
+$(NAME): $(LIBFT) $(MLX) $(OBJ) $(B_OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(B_OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS)
 
 # bonusターゲットも一応定義（同じ内容）
 bonus: $(NAME)
@@ -45,6 +54,10 @@ bonus: $(NAME)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
+# mlxビルド
+$(MLX):
+	$(MAKE) -C $(MLX_DIR)
+
 # オブジェクトファイル作成
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
@@ -52,11 +65,13 @@ $(LIBFT):
 # オブジェクト削除
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
+	# $(MAKE) -C $(MLX_DIR) clean
 	rm -f $(OBJ) $(B_OBJ)
 
 # バイナリ・ライブラリ削除
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
+	# $(MAKE) -C $(MLX_DIR) fclean
 	rm -f $(NAME)
 
 # 全クリーン&再ビルド
