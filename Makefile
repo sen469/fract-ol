@@ -15,7 +15,8 @@ MLX_DIR      = ./incs/mlx/
 ########################################
 
 CC          = cc
-CFLAGS      = -Wall -Wextra -Werror
+# CFLAGS      = -Wall -Wextra -Werror
+CFLAGS      = -Wall -Wextra
 MLX_FLAGS = -lXext -lX11 -lm -lbsd
 INCLUDES    = -I./includes -I$(LIBFT_DIR)
 
@@ -26,9 +27,19 @@ INCLUDES    = -I./includes -I$(LIBFT_DIR)
 SRC = \
 	  srcs/input_init.c \
 	  srcs/main.c \
-	  srcs/utils/complex_multiple.c \
+	  srcs/utils/comp_multiple.c \
 	  srcs/utils/ft_atof.c \
-	  srcs/mandelbrot/mandelbrot.c
+	  srcs/mandelbrot/mandelbrot.c \
+	  srcs/mandelbrot/make_mandelbrot.c \
+	  srcs/mandelbrot/init_array.c \
+	  srcs/utils/mlx_utils/change_color.c \
+	  srcs/utils/mlx_utils/is_keycode.c \
+	  srcs/utils/mlx_utils/point_init.c \
+	  srcs/utils/comp_abs.c \
+	  srcs/utils/mlx_utils/my_mlx_pixel_put.c \
+
+
+
 
 
 BONUS_SRC = \

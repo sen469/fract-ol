@@ -38,57 +38,36 @@ static void	calculate(t_val *v)
 		v->is_div = 1;
 }
 
-void	make_mandelbrot()
+void	make_mandelbrot(t_point *p, t_data *data)
 {
+	int		i, j;
+	t_val	v;
 
-}
-
-/*
-// array init に同じ内容を記入
-void	arr_init(t_val *a, t_point *p, int i, int j)
-{
-	// 1ピクセル当たりの大きさを記録
 	p->pixel = 3.0 / 200 / p->zoom;
-	i = HEIGHT - i;
-	a->pos.re = p->sta.re + i * p->pixel;
-	a->pos.im = p->sta.im + j * p->pixel;
-}
-*/
-
-
-/*
-void	make_mandelbrot(t_point *p, void *img)
-{
-	t_val	arr[WIDTH][HEIGHT];
-	int		i;
-	int		j;
-	int		flag;
-
-	flag = 1;
-	while (flag)
+	i = 0;
+	while (i < HEIGHT)
 	{
-		i = 0;
 		j = 0;
-		while (i < HEIGHT)
+		while (j < WIDTH)
 		{
-			while (j < WIDTH)
-			{
-				arr_init(&arr[i][j], p, i, j);
-				calculate(&arr[i][j]);
-				if (arr[i][j].is_div == 0)
-				{
-					// img 黒塗り
-				}
-				else
-				{
-					// 現在の回数で色を塗る
-				}
-				j++;
-			}
-			i++;
+			v.pos.re = p->sta.re + (i - HEIGHT / 2) * p->pixel;
+			v.pos.im = p->sta.im + (j - WIDTH / 2) * p->pixel;
+			v.pre.re = 0;
+			v.pre.im = 0;
+			v.now = v.pos;
+			v.cnt = 0;
+			v.is_div = 0;
+
+			calculate(&v);
+
+			// ピクセルに色を設定
+			int color = (v.is_div == 0) ? 0x000000 : 0x00FF00 + v.cnt * 10;
+			// ピクセル描画関数を使って描画
+			my_mlx_pixel_put(data, j, i, color);
+			j++;
 		}
-		// show image;
-		// 
+		i++;
 	}
+	// 最後にイメージをウィンドウに表示
+	mlx_put_image_to_window(data->mlx, data->win, data->img, 0, 0);
 }
-*/

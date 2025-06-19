@@ -24,7 +24,7 @@ int main()
 }
 */
 
-// /*
+/*
 int	main(int argc, char **argv)
 {
 	t_comp	input;
@@ -42,4 +42,11 @@ int	main(int argc, char **argv)
 	// input_init(&input, argv[2], argv[3]);
 	return (0);
 }
-// */
+*/
+
+
+int main()
+{
+	mandelbrot();
+	return (0);
+}
