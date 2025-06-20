@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comp_abs.c                                         :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 19:45:59 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/17 19:47:59 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/20 18:09:29 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 18:35:22 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/fractol.h"
 
-double	comp_abs(t_comp val)
+void	mlx_setup(t_data *d)
 {
-	double	ret;
-
-	ret = val.re * val.re + val.im * val.im;
-	return (sqrt(ret));
+	d->mlx_ptr = mlx_init();
+	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "HELLO WINDOW");
+	d->img_ptr = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
+	d->addr = mlx_get_data_addr(d->img_ptr, &d->bpp, &d->line_len, &d->endian);
 }

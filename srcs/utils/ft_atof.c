@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:50:55 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/12 16:17:24 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/19 21:26:21 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,11 +74,3 @@ double	ft_atof(const char *str)
 	}
 	return (res);
 }
-
-/*
-#include <stdio.h>
-int main()
-{
-	printf("%f, %f\n", ft_atof("123"), ft_atof("0000.0001"));
-}
-*/

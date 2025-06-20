@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/24 23:07:55 by ssawa             #+#    #+#             */
-/*   Updated: 2025/04/28 23:32:20 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/19 21:31:25 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ void	ft_putnbr_fd(int n, int fd);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(const char *str, char c);
 char	*ft_strchr(const char *str, int c);
+int	ft_strcmp(char *s1, char *s2);
 char	*ft_strdup(const char *str);
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
 char	*ft_strjoin(const char *str1, const char *str2);

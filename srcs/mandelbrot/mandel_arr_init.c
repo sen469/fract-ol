@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comp_abs.c                                         :+:      :+:    :+:   */
+/*   mandel_arr_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 19:45:59 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/17 19:47:59 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/20 19:28:57 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 20:50:25 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/fractol.h"
 
-double	comp_abs(t_comp val)
+void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point)
 {
-	double	ret;
+	int	i;
+	int	j;
 
-	ret = val.re * val.re + val.im * val.im;
-	return (sqrt(ret));
+	i = 0;
+	while (i < HEIGHT)
+	{
+		j = 0;
+		while (j < WIDTH)
+		{
+			arr[i][j].cnt = 0;
+			arr[i][j].pre.re = 0;
+			arr[i][j].pre.im = 0;
+			arr[i][j].pos.re = point->str_abs.re +  point->pixel * j;
+			arr[i][j].pos.im = point->str_abs.im +  point->pixel * (HEIGHT - i - 1);
+			j++;
+		}
+		i++;
+	}
 }

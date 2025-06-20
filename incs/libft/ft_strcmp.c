@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   input_init.c                                       :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/12 15:48:02 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/12 16:17:07 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/19 21:28:57 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/19 21:31:55 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/fractol.h"
+#include "libft.h"
 
-void	input_init(t_comp *input, char *re, char *im)
+int	ft_strcmp(char *s1, char *s2)
 {
-	input->re = ft_atof(re);
-	input->im = ft_atof(im);
+	while (*s1 || *s2)
+	{
+		if ((*s1) != (*s2))
+			return (*s1 - *s2);
+		s1++;
+		s2++;
+	}
+	return (0);
 }

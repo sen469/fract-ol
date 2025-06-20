@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/06/19 21:22:23 by ssawa             #+#    #+#              #
+#    Updated: 2025/06/20 20:46:58 by ssawa            ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 ########################################
 #            Library Settings          #
 ########################################
@@ -24,28 +36,31 @@ INCLUDES    = -I./includes -I$(LIBFT_DIR)
 #       Source & Object Files          #
 ########################################
 
-SRC = \
-	  srcs/input_init.c \
-	  srcs/main.c \
-	  srcs/utils/comp_multiple.c \
-	  srcs/utils/ft_atof.c \
-	  srcs/mandelbrot/mandelbrot.c \
-	  srcs/mandelbrot/make_mandelbrot.c \
-	  srcs/mandelbrot/init_array.c \
-	  srcs/utils/mlx_utils/change_color.c \
-	  srcs/utils/mlx_utils/is_keycode.c \
-	  srcs/utils/mlx_utils/point_init.c \
-	  srcs/utils/comp_abs.c \
-	  srcs/utils/mlx_utils/my_mlx_pixel_put.c \
+SRCS = \
+	srcs/judge.c \
+	srcs/main.c \
+	srcs/mandelbrot/mandel_arr_init.c \
+	srcs/mandelbrot/mandelbrot.c \
+	srcs/mandelbrot/mapping.c \
+	srcs/utils/comp_abs.c \
+	srcs/utils/comp_add.c \
+	srcs/utils/comp_multiple.c \
+	srcs/utils/ft_atof.c \
+	srcs/is_set.c \
+	srcs/utils/mlx_setup.c \
+	srcs/utils/mlx_utils/get_psychedelic_color.c \
+	srcs/utils/mlx_utils/is_keycode.c \
+	srcs/utils/mlx_utils/my_mlx_pixel_put.c \
+	srcs/utils/mlx_utils/point_init.c
+	# srcs/utils/mlx_utils/change_color.c 
 
 
 
 
+BONUS_SRCS = \
 
-BONUS_SRC = \
-
-OBJ     = $(SRC:.c=.o)
-B_OBJ   = $(BONUS_SRC:.c=.o)
+OBJS     = $(SRCS:.c=.o)
+B_OBJS   = $(BONUS_SRCS:.c=.o)
 
 ########################################
 #               Rules                  #
@@ -55,8 +70,8 @@ B_OBJ   = $(BONUS_SRC:.c=.o)
 all: $(NAME)
 
 # ライブラリ作成: 通常 + bonusもまとめてアーカイブ
-$(NAME): $(LIBFT) $(MLX) $(OBJ) $(B_OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(B_OBJ) $(LIBFT) $(MLX) $(MLX_FLAGS)
+$(NAME): $(LIBFT) $(MLX) $(OBJS) $(B_OBJS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(B_OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS)
 
 # bonusターゲットも一応定義（同じ内容）
 bonus: $(NAME)
@@ -77,7 +92,7 @@ $(MLX):
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
 	# $(MAKE) -C $(MLX_DIR) clean
-	rm -f $(OBJ) $(B_OBJ)
+	rm -f $(OBJS) $(B_OBJS)
 
 # バイナリ・ライブラリ削除
 fclean: clean
@@ -87,5 +102,12 @@ fclean: clean
 
 # 全クリーン&再ビルド
 re: fclean all
+
+BONUS_SRCS =
+B_OBJS = $(BONUS_SRCS:.c=.o)
+
+# --- optional run target ---
+run: re
+	./$(NAME) mandelbrot
 
 .PHONY: all bonus clean fclean re

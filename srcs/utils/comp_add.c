@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_array.c                                       :+:      :+:    :+:   */
+/*   comp_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 22:45:10 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/18 22:48:30 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/20 19:54:05 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 19:55:31 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../incs/fractol.h"
 
-void	init_array(t_val ***arr, t_point *p)
+t_comp	comp_add(t_comp a, t_comp b)
 {
-	int	i;
-	int	j;
+	t_comp	ret;
 
-	i = 0;
-	j = 0;
-	while (i < HEIGHT)
-	{
-		while (j < WIDTH)
-		{
-			p->pixel = 3.0 / 200 / p->zoom;
-			i = HEIGHT - i;
-			arr[i][j]->pos.re = p->sta.re + i * p->pixel;
-			arr[i][j]->pos.im = p->sta.im + j * p->pixel;
-			arr[i][j]->pre.re = 0;
-			arr[i][j]->pre.im = 0;
-		}
-	}
+	ret.re = a.re + b.re;
+	ret.im = a.im + b.im;
+	return (ret);
 }
