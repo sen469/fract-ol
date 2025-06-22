@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_color.c                                     :+:      :+:    :+:   */
+/*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 19:40:17 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/18 19:45:14 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/20 18:09:29 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 18:35:22 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../incs/fractol.h"
+// #include "../../incs/fractol.h"
+#include "fractol.h"
 
-void	change_color(t_color *col)
+void	mlx_setup(t_data *d)
 {
-	col->rgb = (col->r << 16) + \
-				(col->g << 8) + \
-				(col->b);
+	d->mlx_ptr = mlx_init();
+	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "HELLO WINDOW");
+	d->img_ptr = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
+	d->addr = mlx_get_data_addr(d->img_ptr, &d->bpp, &d->line_len, &d->endian);
 }
-

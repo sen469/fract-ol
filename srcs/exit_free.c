@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   point_init.c                                       :+:      :+:    :+:   */
+/*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 19:19:27 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/17 19:34:25 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/22 16:38:25 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/22 16:39:28 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../incs/fractol.h"
+#include "fractol.h"
 
-void	point_init(t_point *point)
+void	exit_free(t_val **arr)
 {
-	point->zoom = 1;
-	point->pixel = 3.0 / 600;
-	point->sta.re = -2.5;
-	point->sta.im = 1.5;
+	free_arr(arr);
+	exit(0);
 }

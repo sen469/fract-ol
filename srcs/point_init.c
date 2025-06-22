@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
+/*   point_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/19 15:39:12 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 20:49:21 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/17 19:19:27 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/17 19:34:25 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../incs/fractol.h"
+// #include "../../../incs/fractol.h"
+#include "fractol.h"
 
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
+void	point_init(t_point *point)
 {
-	char	*dst;
-
-	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
-	*(unsigned int *)dst = color;
+	point->zoom = 1;
+	point->pixel = 3.0 / 600;
+	point->sta.re = -2.5;
+	point->sta.im = 1.5;
 }
-

@@ -1,21 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   setup.c                                            :+:      :+:    :+:   */
+/*   mandel_point_init.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 18:09:29 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 18:35:22 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/22 15:18:47 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/22 15:20:23 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+#include "fractol.h"
 
-void	mlx_setup(t_data *d)
+void	mandel_point_init(t_point *point)
 {
-	d->mlx_ptr = mlx_init();
-	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "HELLO WINDOW");
-	d->img_ptr = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
-	d->addr = mlx_get_data_addr(d->img_ptr, &d->bpp, &d->line_len, &d->endian);
+	point->zoom = 1;
+	point->str_abs.re = -2.5;
+	point->str_abs.im = -1.5;
 }

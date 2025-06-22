@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comp_add.c                                         :+:      :+:    :+:   */
+/*   free_arr.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 19:54:05 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 19:55:31 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/22 16:36:50 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/22 16:37:40 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+#include "fractol.h"
 
-t_comp	comp_add(t_comp a, t_comp b)
+void	free_arr(t_val **arr)
 {
-	t_comp	ret;
+	int	i;
 
-	ret.re = a.re + b.re;
-	ret.im = a.im + b.im;
-	return (ret);
+	i = 0;
+	while (i < HEIGHT)
+	{
+		free(arr[i]);
+	}
+	free(arr);
 }

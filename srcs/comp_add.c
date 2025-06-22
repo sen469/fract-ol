@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_keycode.c                                       :+:      :+:    :+:   */
+/*   comp_add.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/18 22:42:43 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/18 22:43:47 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/20 19:54:05 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 19:55:31 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../incs/fractol.h"
+// #include "../../incs/fractol.h"
+#include "fractol.h"
 
-int	is_keycode(int keycode)
+t_comp	comp_add(t_comp a, t_comp b)
 {
-	// 矢印、カーソルの回転の場合は１を返し、それ以外では0を返す
-	return (1);
+	t_comp	ret;
+
+	ret.re = a.re + b.re;
+	ret.im = a.im + b.im;
+	return (ret);
 }

@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comp_multiple.c                                    :+:      :+:    :+:   */
+/*   comp_abs.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/12 15:40:45 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 19:53:56 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/17 19:45:59 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/17 19:47:59 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+// #include "../../incs/fractol.h"
+#include "fractol.h"
 
-t_comp	comp_multiple(t_comp a, t_comp b)
+double	comp_abs(t_comp val)
 {
-	t_comp	rtn;
+	double	ret;
 
-	rtn.re = a.re * b.re - a.im * b.im;
-	rtn.im = a.re * b.im + b.re * a.im;
-	return (rtn);
+	ret = val.re * val.re + val.im * val.im;
+	return (sqrt(ret));
 }

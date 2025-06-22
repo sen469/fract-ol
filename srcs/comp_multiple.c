@@ -1,35 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mapping.c                                          :+:      :+:    :+:   */
+/*   comp_multiple.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 20:16:27 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 20:35:27 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/12 15:40:45 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 19:53:56 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+// #include "../../incs/fractol.h"
+#include "fractol.h"
 
-void	mandel_mapping(t_data *data, t_val arr[HEIGHT][WIDTH])
+t_comp	comp_multiple(t_comp a, t_comp b)
 {
-	unsigned int	i;
-	unsigned int	j;
-	unsigned int	idx;
-	unsigned int	color;
+	t_comp	rtn;
 
-	i = 0;
-	while (i < HEIGHT)
-	{
-		j = 0;
-		while (j < WIDTH)
-		{
-			idx = data->line_len * i + j * (data->bpp / 8);
-			color = get_psychedelic_color(&arr[i][j]);
-			data->addr[idx] = color;
-			j++;
-		}
-		i++;
-	}
+	rtn.re = a.re * b.re - a.im * b.im;
+	rtn.im = a.re * b.im + b.re * a.im;
+	return (rtn);
 }

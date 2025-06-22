@@ -6,14 +6,14 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 21:34:09 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 20:36:24 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/22 15:21:23 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+#include "fractol.h"
 
 
-static void	calculate(t_val arr[HEIGHT][WIDTH])
+static void	calculate(t_val **arr)
 {
 	int	i;
 	int	j;
@@ -44,12 +44,12 @@ static void	calculate(t_val arr[HEIGHT][WIDTH])
 	}
 }
 
-void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH])
+void	mandelbrot(t_data *data, t_val **arr)
 {
+	// data->pointを初期化する関数を作る必要がある
+	// printf("data->zoom = %.2e, WIDTH = %d, data->point->pixel = %.2e\n", data->point.zoom, WIDTH, data->point.pixel);
+
 	calculate(arr);
-	int i = 400;
-	int j = 400;
-	printf("%.2e, %.2e\n", arr[i][j].now.re, arr[i][j].now.im);
-	mandel_mapping(data, arr);
+	mandel_mapping(data, arr, data->endian);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
 }

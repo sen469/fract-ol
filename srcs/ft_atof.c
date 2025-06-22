@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+// #include "../../incs/fractol.h"
+#include "fractol.h"
 
 /*
 int	ft_isdigit(int c)
@@ -48,7 +49,7 @@ double	ft_atof(const char *str)
 	res = ft_atoi(str);
 	while (*str != '.')
 		str++;
-	printf("len = %d, %s\n",ft_nbrlen(res), str);
+	// printf("len = %d, %s\n",ft_nbrlen(res), str);
 	if (*str == '.')
 	{
 		while (ft_isdigit(*(++str)))

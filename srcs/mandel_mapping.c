@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   comp_abs.c                                         :+:      :+:    :+:   */
+/*   mapping.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/17 19:45:59 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/17 19:47:59 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/20 20:16:27 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 20:35:27 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+#include "fractol.h"
 
-double	comp_abs(t_comp val)
+void	mandel_mapping(t_data *data, t_val **arr, int endian)
 {
-	double	ret;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	color;
+	unsigned int	*pixels;
 
-	ret = val.re * val.re + val.im * val.im;
-	return (sqrt(ret));
+	pixels = (unsigned int *)data->addr;
+	i = 0;
+	while (i < HEIGHT)
+	{
+		j = 0;
+		while (j < WIDTH)
+		{
+			color = get_psychedelic_color(&arr[i][j], endian);
+			pixels[i * (data->line_len / 4) + j] = color;
+			j++;
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 20:38:11 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/22 16:40:17 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,21 @@
 
 # define WIDTH 800
 # define HEIGHT 800
+
+// # define WAVE_LENGTH_R 0.1
+// # define WAVE_LENGTH_G 0.1
+// # define WAVE_LENGTH_B 0.2
+
+// # define RATIO_R 0.2
+// # define RATIO_G 0.4
+// # define RATIO_B 0.5
+// # define RANGE 1
+// # define RGB 255
+
+// # define LIMIT 6.0
+
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
 
 typedef struct	s_comp
 {
@@ -57,8 +72,9 @@ typedef struct	s_data
 	int		bpp;
 	int		line_len;
 	int		endian;
-	t_point	point;
 	int		set;
+	// 座標類
+	t_point	point;
 }				t_data;
 
 
@@ -93,9 +109,9 @@ int	is_set(char *s, t_data *d);
 void	mlx_setup(t_data *d);
 
 // mandelbrot
-void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point);
+void	mandel_arr_init(t_val **arr, t_point *point);
 
-void	judge(t_data *data, t_val arr[HEIGHT][WIDTH]);
+void	judge(t_data *data, t_val **arr);
 
 
 # define MANDELBROT 1
@@ -129,7 +145,12 @@ void	judge(t_data *data, t_val arr[HEIGHT][WIDTH]);
 
 
 
+// フリーと正常終了
+void	exit_free(t_val **arr);
+// 配列のフリー
+void	free_arr(t_val **arr);
 
+int	on_key(int keycode, t_data *data);
 
 // mandelbrotを作る
 // void	make_mandelbrot(t_point *p, t_data *data);
@@ -137,6 +158,8 @@ void	judge(t_data *data, t_val arr[HEIGHT][WIDTH]);
 // void	change_color(t_color *col);
 // 色を塗る
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+// マンデルブロ集合のpointの初期
+void	mandel_point_init(t_point *point);
 // 未完成
 int	is_keycode(int keycode);
 // utils
@@ -149,11 +172,13 @@ double	comp_abs(t_comp val);
 // 文字列を小数に変換
 double	ft_atof(const char *str);
 // サイケデリックな画像を生成
-unsigned int get_psychedelic_color(t_val *v);
+unsigned int get_psychedelic_color(t_val *v, int endian);
 // マンデルブロのマッピング
-void	mandel_mapping(t_data *data, t_val arr[HEIGHT][WIDTH]);
+void	mandel_mapping(t_data *data, t_val **arr, int endian);
 // マンデルブロのmain部分
-void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH]);
+void	mandelbrot(t_data *data, t_val **arr);
+// arrayのまろっく
+t_val	**malloc_arr(void);
 
 
 

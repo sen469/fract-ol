@@ -6,17 +6,22 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 19:28:57 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 20:50:25 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/22 15:20:34 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../incs/fractol.h"
+#include "fractol.h"
 
-void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point)
+void	mandel_arr_init(t_val **arr, t_point *point)
 {
 	int	i;
 	int	j;
 
+	// point->pixel = 3.0 / 800;
+	point->pixel = (3.0 / WIDTH) / point->zoom;
+	// printf("zoom = %.2e, WIDTH = %d, point->pixel = %.2e\n", point->zoom, WIDTH, point->pixel);
+	// point->str_abs.re = -2.5;
+	// point->str_abs.im = -1.5;
 	i = 0;
 	while (i < HEIGHT)
 	{
@@ -32,4 +37,5 @@ void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point)
 		}
 		i++;
 	}
+	// write(1, "arr init finish\n", 16);
 }

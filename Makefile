@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 21:22:23 by ssawa             #+#    #+#              #
-#    Updated: 2025/06/20 20:46:58 by ssawa            ###   ########.fr        #
+#    Updated: 2025/06/22 15:21:52 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,8 @@ CC          = cc
 # CFLAGS      = -Wall -Wextra -Werror
 CFLAGS      = -Wall -Wextra
 MLX_FLAGS = -lXext -lX11 -lm -lbsd
-INCLUDES    = -I./includes -I$(LIBFT_DIR)
+# INCLUDES    = -I./includes -I$(LIBFT_DIR)
+INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################
 #       Source & Object Files          #
@@ -39,19 +40,23 @@ INCLUDES    = -I./includes -I$(LIBFT_DIR)
 SRCS = \
 	srcs/judge.c \
 	srcs/main.c \
-	srcs/mandelbrot/mandel_arr_init.c \
-	srcs/mandelbrot/mandelbrot.c \
-	srcs/mandelbrot/mapping.c \
-	srcs/utils/comp_abs.c \
-	srcs/utils/comp_add.c \
-	srcs/utils/comp_multiple.c \
-	srcs/utils/ft_atof.c \
+	srcs/mandel_arr_init.c \
+	srcs/mandelbrot.c \
+	srcs/mandel_mapping.c \
+	srcs/comp_abs.c \
+	srcs/comp_add.c \
+	srcs/comp_multiple.c \
+	srcs/ft_atof.c \
 	srcs/is_set.c \
-	srcs/utils/mlx_setup.c \
-	srcs/utils/mlx_utils/get_psychedelic_color.c \
-	srcs/utils/mlx_utils/is_keycode.c \
-	srcs/utils/mlx_utils/my_mlx_pixel_put.c \
-	srcs/utils/mlx_utils/point_init.c
+	srcs/mlx_setup.c \
+	srcs/get_psychedelic_color.c \
+	srcs/my_mlx_pixel_put.c \
+	srcs/point_init.c \
+	srcs/on_key.c \
+	srcs/malloc_arr.c \
+	srcs/exit_free.c \
+	srcs/free_arr.c \
+	srcs/mandel_point_init.c
 	# srcs/utils/mlx_utils/change_color.c 
 
 
@@ -71,6 +76,7 @@ all: $(NAME)
 
 # ライブラリ作成: 通常 + bonusもまとめてアーカイブ
 $(NAME): $(LIBFT) $(MLX) $(OBJS) $(B_OBJS)
+	ulimit -s 65532
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(B_OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS)
 
 # bonusターゲットも一応定義（同じ内容）

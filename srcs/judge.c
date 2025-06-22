@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../incs/fractol.h"
+// #include "../incs/fractol.h"
+#include "fractol.h"
 
-void	judge(t_data *data, t_val arr[HEIGHT][WIDTH])
+void	judge(t_data *data, t_val **arr)
 {
-	printf("judge.c %d = data.set\n", data->set);
 	if (data->set == MANDELBROT)
 	{
-		write(1, "sex3\n", 5);
 		mandel_arr_init(arr, &data->point);
 		mandelbrot(data, arr);
 	}
 	else if (data->set == JULIA)
 	{
 		// julia();
-		printf("judge.c julia\n");
 	}
 	else
-		printf("judge.c else");
+	{}
 }

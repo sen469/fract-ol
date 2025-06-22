@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_set.c                                           :+:      :+:    :+:   */
+/*   my_mlx_pixel_put.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/20 08:40:33 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 18:09:08 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/19 15:39:12 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/20 20:49:21 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../incs/fractol.h"
+// #include "../../../incs/fractol.h"
 #include "fractol.h"
 
-int	is_set(char *s, t_data *d)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-	if (!ft_strcmp(s, "mandelbrot"))
-	{
-		d->set = MANDELBROT;
-		return (1);
-	}
-	else if (!ft_strcmp(s, "julia"))
-	{
-		d->set = JULIA;
-		return (1);
-	}
-	return (0);
+	char	*dst;
+
+	dst = data->addr + (y * data->line_len + x * (data->bpp / 8));
+	*(unsigned int *)dst = color;
 }
