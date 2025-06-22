@@ -17,12 +17,12 @@ int	is_set(char *s, t_data *d)
 {
 	if (!ft_strcmp(s, "mandelbrot"))
 	{
-		d->set = MANDELBROT;
+		d->fractal_type = MANDELBROT;
 		return (1);
 	}
 	else if (!ft_strcmp(s, "julia"))
 	{
-		d->set = JULIA;
+		d->fractal_type = JULIA;
 		return (1);
 	}
 	return (0);

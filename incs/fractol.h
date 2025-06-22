@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/22 16:40:17 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/22 22:03:25 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,17 +23,6 @@
 # define WIDTH 800
 # define HEIGHT 800
 
-// # define WAVE_LENGTH_R 0.1
-// # define WAVE_LENGTH_G 0.1
-// # define WAVE_LENGTH_B 0.2
-
-// # define RATIO_R 0.2
-// # define RATIO_G 0.4
-// # define RATIO_B 0.5
-// # define RANGE 1
-// # define RGB 255
-
-// # define LIMIT 6.0
 
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
@@ -58,9 +47,9 @@ typedef struct	s_point
 	// マウスの相対座標
 	t_comp	mouse_rel;
 	// 描画範囲のスタート範囲 行列として考える
-	t_comp	str_abs;
+	t_comp	draw_start;
 	// 描画範囲の終了 行列のとして考える
-	t_comp	end_abs;
+	t_comp	draw_end;
 }				t_point;
 
 typedef struct	s_data
@@ -72,9 +61,7 @@ typedef struct	s_data
 	int		bpp;
 	int		line_len;
 	int		endian;
-	int		set;
-	// 座標類
-	t_point	point;
+	int		fractal_type;
 }				t_data;
 
 
@@ -91,8 +78,20 @@ typedef struct	s_val
 	// 現在の回数
 	int		cnt;
 	// 発散かどうかの判定
-	int		is_div;
+	int		diverged;
 }				t_val;
+
+typedef struct	s_fractol
+{
+	// mlx周りのものを扱う
+	t_data	data;
+	// カーソルや、描画のスタート地点座標周りの値を扱う
+	t_point	point;
+	// 各ピクセルの座標平面上の座標w
+	t_val	fractal_values[HEIGHT][WIDTH];
+	// 再描画が必要かどうか
+	int		need_redraw;
+}				t_fractol;
 
 /*
 typedef struct	s_color
@@ -111,7 +110,7 @@ void	mlx_setup(t_data *d);
 // mandelbrot
 void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point);
 
-void	judge(t_data *data, t_val arr[HEIGHT][WIDTH]);
+void	judge(t_fractol *fractol);
 
 
 # define MANDELBROT 1
@@ -122,18 +121,19 @@ void	judge(t_data *data, t_val arr[HEIGHT][WIDTH]);
 # define UP 65362
 # define DOWN 65364
 # define LEFT 65361
+# define SCROLL_UP 4
+# define SCROLL_DOWN 5
 
 // フリーと正常終了
 // void	exit_free(t_val **arr);
 // 配列のフリー
 // void	free_arr(t_val **arr);
 
-int	on_key(int keycode, t_data *data);
+int	on_key(int keycode, t_fractol *fractol);
 
 // mandelbrotを作る
 // void	make_mandelbrot(t_point *p, t_data *data);
 // mlx_utils
-// void	change_color(t_color *col);
 // 色を塗る
 void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
 // マンデルブロ集合のpointの初期
@@ -157,9 +157,6 @@ void	mandel_mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian);
 void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH]);
 // arrayのまろっく
 // t_val	**malloc_arr(void);
-
-
-
 
 
 #endif

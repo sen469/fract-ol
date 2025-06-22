@@ -12,14 +12,14 @@
 
 #include "fractol.h"
 
-void	judge(t_data *data, t_val arr[HEIGHT][WIDTH])
+void	judge(t_fractol *fractol)
 {
-	if (data->set == MANDELBROT)
+	if (fractol->data.fractal_type == MANDELBROT)
 	{
-		mandel_arr_init(arr, &data->point);
-		mandelbrot(data, arr);
+		mandel_arr_init(fractol->fractal_values, &fractol->point);
+		mandelbrot(&fractol->data, fractol->fractal_values);
 	}
-	else if (data->set == JULIA)
+	else if (fractol->data.fractal_type == JULIA)
 	{
 		// julia();
 	}

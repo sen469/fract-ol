@@ -6,12 +6,20 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 21:34:09 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/22 15:21:23 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/22 21:33:59 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+static void	calculate(t_val arr[HEIGHT][WIDTH]);
+
+void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH])
+{
+	calculate(arr);
+	mandel_mapping(data, arr, data->endian);
+	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
+}
 
 static void	calculate(t_val arr[HEIGHT][WIDTH])
 {
@@ -34,7 +42,7 @@ static void	calculate(t_val arr[HEIGHT][WIDTH])
 				arr[i][j].cnt++;
 				if (comp_abs(arr[i][j].now) > 2)
 				{
-					arr[i][j].is_div = 1;
+					arr[i][j].diverged = 1;
 					break;
 				}
 			}
@@ -44,12 +52,3 @@ static void	calculate(t_val arr[HEIGHT][WIDTH])
 	}
 }
 
-void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH])
-{
-	// data->pointを初期化する関数を作る必要がある
-	// printf("data->zoom = %.2e, WIDTH = %d, data->point->pixel = %.2e\n", data->point.zoom, WIDTH, data->point.pixel);
-
-	calculate(arr);
-	mandel_mapping(data, arr, data->endian);
-	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
-}

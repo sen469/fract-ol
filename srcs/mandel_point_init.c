@@ -15,6 +15,6 @@
 void	mandel_point_init(t_point *point)
 {
 	point->zoom = 1;
-	point->str_abs.re = -2.5;
-	point->str_abs.im = -1.5;
+	point->draw_start.re = -2.5;
+	point->draw_start.im = -1.5;
 }

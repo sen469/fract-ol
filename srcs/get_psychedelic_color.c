@@ -19,8 +19,8 @@ unsigned int get_psychedelic_color(t_val *v, int endian)
 	unsigned int		b;
 	double	t;
 
-	t = (double)v->cnt / 100;
-	if (v->is_div)
+	t = (double)v->cnt / 31.414;
+	if (v->diverged)
 	{
 		r = (int)(sin(6.2831 * t * 3.0) * 127 + 128);
 		g = (int)(sin(6.2831 * t * 5.0 + 2.0) * 127 + 128);

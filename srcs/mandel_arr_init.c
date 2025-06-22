@@ -27,8 +27,8 @@ void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point)
 			arr[i][j].cnt = 0;
 			arr[i][j].pre.re = 0;
 			arr[i][j].pre.im = 0;
-			arr[i][j].pos.re = point->str_abs.re +  point->pixel * j;
-			arr[i][j].pos.im = point->str_abs.im +  point->pixel * (HEIGHT - i - 1);
+			arr[i][j].pos.re = point->draw_start.re +  point->pixel * j;
+			arr[i][j].pos.im = point->draw_start.im +  point->pixel * (HEIGHT - i - 1);
 			j++;
 		}
 		i++;
