@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../incs/fractol.h"
 #include "fractol.h"
 
 void	mlx_setup(t_data *d)

@@ -10,35 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../incs/fractol.h"
 #include "fractol.h"
-
-/*
-int	ft_isdigit(int c)
-{
-	return (c >= '0' && c <= '9');
-}
-*/
-
-static int	ft_nbrlen(long n)
-{
-	int	i;
-
-	i = 0;
-	if (n < 0)
-	{
-		n *= -1;
-		i++;
-	}
-	else if (n == 0)
-		return (1);
-	while (n > 0)
-	{
-		i++;
-		n /= 10;
-	}
-	return (i);
-}
 
 double	ft_atof(const char *str)
 {
@@ -49,7 +21,6 @@ double	ft_atof(const char *str)
 	res = ft_atoi(str);
 	while (*str != '.')
 		str++;
-	// printf("len = %d, %s\n",ft_nbrlen(res), str);
 	if (*str == '.')
 	{
 		while (ft_isdigit(*(++str)))

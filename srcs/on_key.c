@@ -11,24 +11,19 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
-#include <bits/pthreadtypes.h>
 
 int	on_key(int keycode, t_data *data)
 {
-	// t_val	**arr = malloc_arr();
-
 	printf("keycode = %d\n", keycode);
 	data->point.pixel = data->point.zoom;
 	if (keycode == ESC)
 	{
-		// free_arr(arr);
 		exit(0);
 	}
 	else if (keycode == RIGHT)
 	{
 		printf("RIGHT\n");
 		data->point.mouse_abs.re += 10 * data->point.pixel;
-		// mandelbrot(data, arr);
 		printf("RIGHT FINISH\n");
 	}
 	else if (keycode == LEFT)

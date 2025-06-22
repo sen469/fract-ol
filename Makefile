@@ -53,11 +53,7 @@ SRCS = \
 	srcs/my_mlx_pixel_put.c \
 	srcs/point_init.c \
 	srcs/on_key.c \
-	srcs/malloc_arr.c \
-	srcs/exit_free.c \
-	srcs/free_arr.c \
 	srcs/mandel_point_init.c
-	# srcs/utils/mlx_utils/change_color.c 
 
 
 

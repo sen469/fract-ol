@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../../incs/fractol.h"
 #include "fractol.h"
 
 void	point_init(t_point *point)

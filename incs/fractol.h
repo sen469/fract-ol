@@ -109,9 +109,9 @@ int	is_set(char *s, t_data *d);
 void	mlx_setup(t_data *d);
 
 // mandelbrot
-void	mandel_arr_init(t_val **arr, t_point *point);
+void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point);
 
-void	judge(t_data *data, t_val **arr);
+void	judge(t_data *data, t_val arr[HEIGHT][WIDTH]);
 
 
 # define MANDELBROT 1
@@ -123,32 +123,10 @@ void	judge(t_data *data, t_val **arr);
 # define DOWN 65364
 # define LEFT 65361
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // フリーと正常終了
-void	exit_free(t_val **arr);
+// void	exit_free(t_val **arr);
 // 配列のフリー
-void	free_arr(t_val **arr);
+// void	free_arr(t_val **arr);
 
 int	on_key(int keycode, t_data *data);
 
@@ -174,11 +152,11 @@ double	ft_atof(const char *str);
 // サイケデリックな画像を生成
 unsigned int get_psychedelic_color(t_val *v, int endian);
 // マンデルブロのマッピング
-void	mandel_mapping(t_data *data, t_val **arr, int endian);
+void	mandel_mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian);
 // マンデルブロのmain部分
-void	mandelbrot(t_data *data, t_val **arr);
+void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH]);
 // arrayのまろっく
-t_val	**malloc_arr(void);
+// t_val	**malloc_arr(void);
 
 
 

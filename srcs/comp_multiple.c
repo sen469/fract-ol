@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../incs/fractol.h"
 #include "fractol.h"
 
 t_comp	comp_multiple(t_comp a, t_comp b)

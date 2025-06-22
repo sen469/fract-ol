@@ -13,7 +13,7 @@
 #include "fractol.h"
 
 
-static void	calculate(t_val **arr)
+static void	calculate(t_val arr[HEIGHT][WIDTH])
 {
 	int	i;
 	int	j;
@@ -44,7 +44,7 @@ static void	calculate(t_val **arr)
 	}
 }
 
-void	mandelbrot(t_data *data, t_val **arr)
+void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH])
 {
 	// data->pointを初期化する関数を作る必要がある
 	// printf("data->zoom = %.2e, WIDTH = %d, data->point->pixel = %.2e\n", data->point.zoom, WIDTH, data->point.pixel);

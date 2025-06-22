@@ -12,12 +12,11 @@
 
 #include "fractol.h"
 
-
 int	main(int ac, char **av)
 {
 	int	flag;
 	t_data	data;
-	t_val	**arr = malloc_arr();
+	t_val	arr[HEIGHT][WIDTH];
 
 	if (ac <= 1)
 		return (0);
@@ -29,18 +28,13 @@ int	main(int ac, char **av)
 	else if (is_set(av[1], &data))
 	{
 		mlx_setup(&data);
-		mlx_setup(&data);
 		mandel_point_init(&data.point);
-		mlx_setup(&data);
 		judge(&data, arr);
-		mlx_setup(&data);
 		// キー入力を受け取ったときにはmapを初期化する
 		mlx_key_hook(data.win_ptr, on_key, &data);
 		// キー入力を受け取らない場合はマップを更新していく
 		// mlx_loop_hook(void *mlx_ptr, int (*funct_ptr)(), void *param);
-		mlx_setup(&data);
 		mlx_loop(data.mlx_ptr);
 	}
-	free_arr(arr);
 	return (0);
 }

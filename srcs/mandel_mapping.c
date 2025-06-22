@@ -12,7 +12,7 @@
 
 #include "fractol.h"
 
-void	mandel_mapping(t_data *data, t_val **arr, int endian)
+void	mandel_mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian)
 {
 	unsigned int	i;
 	unsigned int	j;

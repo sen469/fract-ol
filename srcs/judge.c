@@ -10,10 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../incs/fractol.h"
 #include "fractol.h"
 
-void	judge(t_data *data, t_val **arr)
+void	judge(t_data *data, t_val arr[HEIGHT][WIDTH])
 {
 	if (data->set == MANDELBROT)
 	{

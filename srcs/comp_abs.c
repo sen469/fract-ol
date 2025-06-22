@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "../../incs/fractol.h"
 #include "fractol.h"
 
 double	comp_abs(t_comp val)
