@@ -28,7 +28,7 @@ MLX_DIR      = ./incs/mlx/
 
 CC          = cc
 # CFLAGS      = -Wall -Wextra -Werror
-CFLAGS      = -Wall -Wextra
+CFLAGS      = -Wall -Wextra -O2
 MLX_FLAGS = -lXext -lX11 -lm -lbsd
 # INCLUDES    = -I./includes -I$(LIBFT_DIR)
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
@@ -53,6 +53,8 @@ SRCS = \
 	srcs/my_mlx_pixel_put.c \
 	srcs/point_init.c \
 	srcs/on_key.c \
+	srcs/on_scroll.c \
+	srcs/zoom.c \
 	srcs/mandel_point_init.c
 
 
@@ -72,7 +74,6 @@ all: $(NAME)
 
 # ライブラリ作成: 通常 + bonusもまとめてアーカイブ
 $(NAME): $(LIBFT) $(MLX) $(OBJS) $(B_OBJS)
-	ulimit -s 65532
 	$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(B_OBJS) $(LIBFT) $(MLX) $(MLX_FLAGS)
 
 # bonusターゲットも一応定義（同じ内容）

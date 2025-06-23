@@ -14,24 +14,39 @@
 
 int	on_key(int keycode, t_fractol *fractol)
 {
-	printf("keycode = %d\n", keycode);
-	fractol->point.pixel = fractol->point.zoom;
+	// printf("keycode = %d\n", keycode);
+	fractol->point.pixel = 3.0 / WIDTH / fractol->point.zoom;
 	if (keycode == ESC)
+	{
+		write(1, "ESC\n", 4);
 		exit(0);
+	}
 	else if (keycode == RIGHT)
-		fractol->point.draw_start.re += 0.1 * fractol->point.pixel;
+	{
+		fractol->point.draw_start.re += 10 * fractol->point.pixel;
+		// write(1, "RIGHT\n", 6);
+	}
 	else if (keycode == LEFT)
-		fractol->point.draw_start.re -= 0.1 * fractol->point.pixel;
+	{
+		fractol->point.draw_start.re -= 10 * fractol->point.pixel;
+		// write(1, "LEFT\n", 5);
+	}
 	else if (keycode == UP)
-		fractol->point.draw_start.im += 0.1 * fractol->point.pixel;
+	{
+		fractol->point.draw_start.im += 10 * fractol->point.pixel;
+		// write(1, "UP\n", 3);
+	}
 	else if (keycode == DOWN)
-		fractol->point.draw_start.im -= 0.1 * fractol->point.pixel;
+	{
+		fractol->point.draw_start.im -= 10 * fractol->point.pixel;
+		// write(1, "DOWN\n", 5);
+	}
 	else
 		return (1);
 
 	// どの矢印キーでも共通して再描画
-	mandel_arr_init(fractol->fractal_values, &fractol->point);
-	mandelbrot(&fractol->data, fractol->fractal_values);
+	// mandel_arr_init(fractol->fractal_values, &fractol->point);
+	// mandelbrot(&fractol->data, fractol->fractal_values);
+	fractol->need_redraw = 1;
 	return (1);
 }
-

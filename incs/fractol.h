@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/22 22:03:25 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/23 19:04:12 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,8 @@ void	judge(t_fractol *fractol);
 // void	free_arr(t_val **arr);
 
 int	on_key(int keycode, t_fractol *fractol);
+int	on_scroll(int button, int x, int y, t_fractol *fractol);
+void	zoom(int x, int y, t_fractol *fractol);
 
 // mandelbrotを作る
 // void	make_mandelbrot(t_point *p, t_data *data);

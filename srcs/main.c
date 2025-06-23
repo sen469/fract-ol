@@ -19,27 +19,18 @@ int	loop_update(void *param)
 	if (fractol->need_redraw)
 	{
 		mandel_arr_init(fractol->fractal_values, &fractol->point);
-		mandelbrot(&fractol->data, fractol->fractal_values);
 		fractol->need_redraw = 0;
 	}
-	return (0);
-}
-
-int	on_scroll(int button, int x, int y, t_fractol *fractol)
-{
-	fractol->need_redraw = 0;
-	if (button == SCROLL_UP)
-		fractol->point.zoom *= 1.1;
-	else if (button == SCROLL_DOWN)
-		fractol->point.zoom *= 0.9;
-	else
-	{
-		fractol->need_redraw = 1;
-		return (0);
-	}
-	mandel_arr_init(fractol->fractal_values, &fractol->point);
 	mandelbrot(&fractol->data, fractol->fractal_values);
-	return (1);
+	printf("zoom = %.8e\n", fractol->point.zoom);
+		// fractol->need_redraw = 0;
+
+		/*
+	if (fractol->need_redraw)
+	{
+	}
+	*/
+	return (0);
 }
 
 int	main(int ac, char **av)
@@ -59,6 +50,7 @@ int	main(int ac, char **av)
 		mlx_setup(&fractol.data);
 		mandel_point_init(&fractol.point);
 		judge(&fractol);
+		fractol.need_redraw = 0;
 		// キー入力を受け取ったときにはmapを初期化する
 		mlx_key_hook(fractol.data.win_ptr, on_key, &fractol);
 		// マウスイベントの登録（正しい使い方）
