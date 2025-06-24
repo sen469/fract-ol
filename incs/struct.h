@@ -16,14 +16,14 @@
 # define WIDTH 800
 # define HEIGHT 800
 
-typedef struct	s_comp
+typedef struct s_comp
 {
 	double	re;
 	double	im;
 }				t_comp;
 
 // マウスの相対座標、絶対座標、ピクセルの大きさ、倍率、画像スタートの絶対座標
-typedef struct	s_point
+typedef struct s_point
 {
 	// 倍率
 	double	zoom;
@@ -31,17 +31,11 @@ typedef struct	s_point
 	double	pixel;
 	// startの絶対座標
 	t_comp	sta;
-	// マウスの絶対座標
-	t_comp	mouse_abs;
-	// マウスの相対座標
-	t_comp	mouse_rel;
 	// 描画範囲のスタート範囲 行列として考える
 	t_comp	draw_start;
-	// 描画範囲の終了 行列のとして考える
-	t_comp	draw_end;
-}				t_point;
+}	t_point;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*win_ptr;
@@ -51,10 +45,9 @@ typedef struct	s_data
 	int		line_len;
 	int		endian;
 	int		fractal_type;
-}				t_data;
+}	t_data;
 
-
-typedef struct	s_val
+typedef struct s_val
 {
 	// 絶対座標
 	t_comp	pos;
@@ -68,9 +61,9 @@ typedef struct	s_val
 	int		cnt;
 	// 発散かどうかの判定
 	int		diverged;
-}				t_val;
+}	t_val;
 
-typedef struct	s_fractol
+typedef struct s_fractol
 {
 	// mlx周りのものを扱う
 	t_data	data;
@@ -81,6 +74,6 @@ typedef struct	s_fractol
 	// 再描画が必要かどうか
 	int		need_redraw;
 	t_comp	param;
-}				t_fractol;
+}	t_fractol;
 
 #endif

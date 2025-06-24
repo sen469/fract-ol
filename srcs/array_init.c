@@ -26,17 +26,15 @@ void	array_init(t_val arr[HEIGHT][WIDTH], t_point *point, int type)
 		{
 			arr[i][j].cnt = 0;
 			arr[i][j].diverged = 0;
-			arr[i][j].pos.re = point->draw_start.re +  point->pixel * j;
-			arr[i][j].pos.im = point->draw_start.im +  point->pixel * i;
-			if (type == MANDELBROT)
+			arr[i][j].pos.re = point->draw_start.re + point->pixel * j;
+			arr[i][j].pos.im = point->draw_start.im + point->pixel * i;
+			if (type == MANDELBROT || type == BURNING_SHIP)
 			{
 				arr[i][j].pre.re = 0;
 				arr[i][j].pre.im = 0;
 			}
 			else if (type == JULIA)
-			{
 				arr[i][j].pre = arr[i][j].pos;
-			}
 			j++;
 		}
 		i++;

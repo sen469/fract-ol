@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   on_scroll.c                                        :+:      :+:    :+:   */
+/*   close_window.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/23 18:51:45 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/23 19:04:47 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/24 18:38:30 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/24 18:38:47 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	on_scroll(int button, int x, int y, void *param)
+int	close_window(void *param)
 {
-	t_fractol	*fractol;
-
-	fractol = (t_fractol *)param;
-	fractol->need_redraw = 1;
-	if (button == SCROLL_UP)
-	{
-		fractol->point.zoom *= 1.1;
-		zoom(x, y, fractol);
-	}
-	else if (button == SCROLL_DOWN)
-	{
-		fractol->point.zoom *= 0.9;
-		zoom(x, y, fractol);
-	}
-	else if (button == CLICK)
-		skip(x, y, &fractol->point);
-	else
-	{
-		fractol->need_redraw = 0;
-		return (0);
-	}
+	(void)param;
+	exit(0);
 	return (0);
 }

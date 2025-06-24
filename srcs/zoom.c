@@ -22,7 +22,6 @@ void	zoom(int x, int y, t_fractol *fractol)
 	fractol->point.pixel = 3.0 / WIDTH / fractol->point.zoom;
 	pixel_size = fractol->point.pixel;
 	mouse_pos_absolute = fractol->fractal_values[y][x].pos;
-	// printf("mouse x = %.4e, y = %.4e\n", mouse_pos_absolute.re, mouse_pos_absolute.im);
 	fractol->point.draw_start.re = mouse_pos_absolute.re - x * pixel_size;
 	fractol->point.draw_start.im = mouse_pos_absolute.im - y * pixel_size;
 }

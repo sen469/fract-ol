@@ -16,8 +16,16 @@ double	ft_atof(const char *str)
 {
 	double	i;
 	double	res;
+	int		sign;
+	char	c;
 
 	i = 0.1;
+	sign = 1;
+	while (*str && (*str == '+' || *str == '-'))
+	{
+		if (*(str++) == '-')
+			sign *= (-1);
+	}
 	res = ft_atoi(str);
 	while (*str != '.')
 		str++;
@@ -44,5 +52,5 @@ double	ft_atof(const char *str)
 				res *= 10;
 		}
 	}
-	return (res);
+	return (sign * res);
 }

@@ -16,22 +16,18 @@
 
 static void	calculate_mandelbrot(t_val arr[HEIGHT][WIDTH]);
 static void	calculate_julia(t_val arr[HEIGHT][WIDTH], t_comp *param);
+static void	calculate_burning_ship(t_val arr[HEIGHT][WIDTH]);
 
 void	draw(t_data *data, t_val arr[HEIGHT][WIDTH], t_comp *param)
 {
 	if (data->fractal_type == MANDELBROT)
-	{
 		calculate_mandelbrot(arr);
-	}
 	else if (data->fractal_type == JULIA)
-	{
-		// printf("judge, param = %.4e, %.4e\n", param->re, param->im);
 		calculate_julia(arr, param);
-	}
+	else if (data->fractal_type == BURNING_SHIP)
+		calculate_burning_ship(arr);
 	mapping(data, arr, data->endian);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
-	// write(1, "map update\n", 11);
-	// mlx_string_put(data->mlx_ptr, data->win_ptr, 600, 700, WHITE, );
 }
 
 static void	calculate_mandelbrot(t_val arr[HEIGHT][WIDTH])
@@ -87,6 +83,40 @@ static void	calculate_julia(t_val arr[HEIGHT][WIDTH], t_comp *param)
 				{
 					arr[i][j].now = comp_add(*param, \
 							comp_multiple(arr[i][j].pre, arr[i][j].pre));
+					arr[i][j].pre = arr[i][j].now;
+					arr[i][j].cnt++;
+				}
+				if (comp_abs(arr[i][j].now) > 2)
+				{
+					arr[i][j].diverged = 1;
+					break;
+				}
+			}
+			j++;
+		}
+		i++;
+	}
+}
+
+static void	calculate_burning_ship(t_val arr[HEIGHT][WIDTH])
+{
+	int	i;
+	int	j;
+	int	c;
+
+	i = 0;
+	while (i < HEIGHT)
+	{
+		j = 0;
+		while (j < WIDTH)
+		{
+			c = 0;
+			while (c++ < 50)
+			{
+				if (arr[i][j].diverged == 0)
+				{
+					arr[i][j].now = comp_add(arr[i][j].pos, \
+							comp_multiple_burning_ship(arr[i][j].pre));
 					arr[i][j].pre = arr[i][j].now;
 					arr[i][j].cnt++;
 				}

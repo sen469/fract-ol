@@ -6,82 +6,82 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/24 13:35:01 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/24 23:01:33 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FRACT_OL
-# define FRACT_OL
+#ifndef FRACTOL_H
+# define FRACTOL_H
 
+/* ========================== */
+/*         Includes           */
+/* ========================== */
 # include "libft/libft.h"
 # include "mlx/mlx.h"
+# include "struct.h"
 # include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
-#include <math.h>
-#include "struct.h"
+# include <math.h>
 
-
-
+/* ========================== */
+/*         Constants          */
+/* ========================== */
 # define BLACK 0x000000
 # define WHITE 0xFFFFFF
 
 # define MANDELBROT 1
 # define JULIA 2
+# define BURNING_SHIP 3
 
-// # define ESC 65307
-// # define RIGHT 65363
-// # define UP 65362
-// # define DOWN 65364
-// # define LEFT 65361
+# define ESC 65307
+# define RIGHT 65363
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
 
+# define CLICK 1
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
-# define ESC 53
-# define RIGHT 124
-# define UP 126
-# define DOWN 125
-# define LEFT 123
+// Mac 用（必要に応じて有効化）
+// # define ESC 53
+// # define RIGHT 124
+// # define UP 126
+// # define DOWN 125
+// # define LEFT 123
 
+/* ========================== */
+/*         Prototypes         */
+/* ========================== */
 
-int		is_set(char **s, t_data *d, int ac, t_comp *param);
-void	mlx_setup(t_data *d);
+/* ---------- Init / Setup ---------- */
+int				is_set(char **s, t_data *d, int ac, t_comp *param);
+void			mlx_setup(t_data *d);
+void			point_init(t_point *point);
+void			array_init(t_val arr[HEIGHT][WIDTH], t_point *point, int type);
 
-// mandelbrot
-void	array_init(t_val arr[HEIGHT][WIDTH], t_point *point, int type);
+/* ---------- Fractal Drawing ---------- */
+void			judge(t_fractol *fractol);
+void			draw(t_data *data, t_val arr[HEIGHT][WIDTH], t_comp *param);
+void			mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian);
 
-// 集合の判定
-void	judge(t_fractol *fractol);
+/* ---------- Input Handling ---------- */
+int				on_key(int keycode, void *param);
+int				on_scroll(int button, int x, int y, void *param);
+int				close_window(void *param);
+void			zoom(int x, int y, t_fractol *fractol);
+void			skip(int x, int y, t_point *point);
+int				is_keycode(int keycode);
 
-// 入力系
-int		on_key(int keycode, t_fractol *fractol);
-int		on_scroll(int button, int x, int y, t_fractol *fractol);
-void	zoom(int x, int y, t_fractol *fractol);
+/* ---------- Complex Number Utils ---------- */
+t_comp			comp_multiple(t_comp a, t_comp b);
+t_comp			comp_multiple_burning_ship(t_comp z);
+t_comp			comp_add(t_comp a, t_comp b);
+double			comp_abs(t_comp val);
 
-// mlx_utils
-// 色を塗る
-// void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
-// マンデルブロ集合のpointの初期
-void	point_init(t_point *point);
-// 未完成
-int	is_keycode(int keycode);
-// utils
-// 複素数の掛け算
-t_comp	comp_multiple(t_comp a, t_comp b);
-// 複素数の足し算
-t_comp	comp_add(t_comp a, t_comp b);
-// 複素数の絶対値
-double	comp_abs(t_comp val);
-// 文字列を小数に変換
-double	ft_atof(const char *str);
-// サイケデリックな画像を生成
-unsigned int get_psychedelic_color(t_val *v, int endian);
-// マンデルブロのマッピング
-void	mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian);
-// マンデルブロのmain部分
-void	draw(t_data *data, t_val arr[HEIGHT][WIDTH], t_comp *param);
-// ac == 4のときの処理
-// void	julia_const_init(t_fractol *fractal, char *re, char *im);
+/* ---------- Misc Utilities ---------- */
+double			ft_atof(const char *str);
+unsigned int	get_psychedelic_color(t_val *v, int endian);
 
 #endif
