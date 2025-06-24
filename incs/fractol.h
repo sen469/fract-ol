@@ -62,6 +62,7 @@ typedef struct	s_data
 	int		line_len;
 	int		endian;
 	int		fractal_type;
+	t_comp	julia;
 }				t_data;
 
 
