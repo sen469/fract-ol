@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandelbrot.c                                       :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 21:34:09 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/22 21:33:59 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/24 13:49:35 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "mlx/mlx.h"
+#include "struct.h"
 
 static void	calculate_mandelbrot(t_val arr[HEIGHT][WIDTH]);
-static void	calculate_julia(t_comp const, t_val arr[HEIGHT][WIDTH]);
+static void	calculate_julia(t_val arr[HEIGHT][WIDTH], t_comp *param);
 
-void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH])
+void	draw(t_data *data, t_val arr[HEIGHT][WIDTH], t_comp *param)
 {
 	if (data->fractal_type == MANDELBROT)
 	{
@@ -24,14 +25,12 @@ void	mandelbrot(t_data *data, t_val arr[HEIGHT][WIDTH])
 	}
 	else if (data->fractal_type == JULIA)
 	{
-		data->julia.re = 0;
-		data->julia.im = 0;
-		calculate_julia(data->julia, arr);
+		// printf("judge, param = %.4e, %.4e\n", param->re, param->im);
+		calculate_julia(arr, param);
 	}
-	calculate_mandelbrot(arr);
-	mandel_mapping(data, arr, data->endian);
+	mapping(data, arr, data->endian);
 	mlx_put_image_to_window(data->mlx_ptr, data->win_ptr, data->img_ptr, 0, 0);
-	write(1, "map update\n", 11);
+	// write(1, "map update\n", 11);
 	// mlx_string_put(data->mlx_ptr, data->win_ptr, 600, 700, WHITE, );
 }
 
@@ -69,7 +68,7 @@ static void	calculate_mandelbrot(t_val arr[HEIGHT][WIDTH])
 	}
 }
 
-static void	calculate_julia(t_comp c, t_val arr[HEIGHT][WIDTH])
+static void	calculate_julia(t_val arr[HEIGHT][WIDTH], t_comp *param)
 {
 	int	i;
 	int	j;
@@ -86,7 +85,7 @@ static void	calculate_julia(t_comp c, t_val arr[HEIGHT][WIDTH])
 			{
 				if (arr[i][j].diverged == 0)
 				{
-					arr[i][j].now = comp_add(c, \
+					arr[i][j].now = comp_add(*param, \
 							comp_multiple(arr[i][j].pre, arr[i][j].pre));
 					arr[i][j].pre = arr[i][j].now;
 					arr[i][j].cnt++;

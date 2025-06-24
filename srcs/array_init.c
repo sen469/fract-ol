@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mandel_arr_init.c                                  :+:      :+:    :+:   */
+/*   array_init.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 19:28:57 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/22 15:20:34 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/24 13:31:01 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point)
+void	array_init(t_val arr[HEIGHT][WIDTH], t_point *point, int type)
 {
 	int	i;
 	int	j;
@@ -25,11 +25,18 @@ void	mandel_arr_init(t_val arr[HEIGHT][WIDTH], t_point *point)
 		while (j < WIDTH)
 		{
 			arr[i][j].cnt = 0;
-			arr[i][j].pre.re = 0;
-			arr[i][j].pre.im = 0;
+			arr[i][j].diverged = 0;
 			arr[i][j].pos.re = point->draw_start.re +  point->pixel * j;
 			arr[i][j].pos.im = point->draw_start.im +  point->pixel * i;
-			arr[i][j].diverged = 0;
+			if (type == MANDELBROT)
+			{
+				arr[i][j].pre.re = 0;
+				arr[i][j].pre.im = 0;
+			}
+			else if (type == JULIA)
+			{
+				arr[i][j].pre = arr[i][j].pos;
+			}
 			j++;
 		}
 		i++;

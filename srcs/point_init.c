@@ -11,11 +11,12 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "struct.h"
 
 void	point_init(t_point *point)
 {
-	point->zoom = 1;
-	point->pixel = 3.0 / 600;
-	point->sta.re = -2.5;
-	point->sta.im = 1.5;
+	point->zoom = 0.5;
+	point->pixel = 3.0 / HEIGHT / point->zoom;
+	point->draw_start.re = -(WIDTH / 2.0) * point->pixel;
+	point->draw_start.im = -(HEIGHT / 2.0) * point->pixel;
 }

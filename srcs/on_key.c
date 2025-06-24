@@ -14,7 +14,7 @@
 
 int	on_key(int keycode, t_fractol *fractol)
 {
-	// printf("keycode = %d\n", keycode);
+	printf("keycode = %d\n", keycode);
 	fractol->point.pixel = 3.0 / WIDTH / fractol->point.zoom;
 	if (keycode == ESC)
 	{
@@ -44,9 +44,6 @@ int	on_key(int keycode, t_fractol *fractol)
 	else
 		return (1);
 
-	// どの矢印キーでも共通して再描画
-	// mandel_arr_init(fractol->fractal_values, &fractol->point);
-	// mandelbrot(&fractol->data, fractol->fractal_values);
 	fractol->need_redraw = 1;
 	return (1);
 }

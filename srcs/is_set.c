@@ -12,18 +12,34 @@
 
 // #include "../incs/fractol.h"
 #include "fractol.h"
+#include "libft.h"
 
-int	is_set(char *s, t_data *d)
+int	is_set(char **av, t_data *d, int ac, t_comp *param)
 {
-	if (!ft_strcmp(s, "mandelbrot"))
-	{
-		d->fractal_type = MANDELBROT;
-		return (1);
-	}
-	else if (!ft_strcmp(s, "julia"))
+	if (ac == 4 && !ft_strcmp(av[1], "julia"))
 	{
 		d->fractal_type = JULIA;
-		return (1);
+		param->re = ft_atof(av[2]);
+		param->im = ft_atof(av[3]);
+		printf("param->re = %.4e, param->im = %.4e\n", param->re, param->im);
 	}
-	return (0);
+	else if (ac == 2 && !ft_strcmp(av[1], "mandelbrot"))
+	{
+		d->fractal_type = MANDELBROT;
+		// return (1);
+	}
+	else if (ac == 2 && !ft_strcmp(av[1], "julia"))
+	{
+		d->fractal_type = JULIA;
+		// param->re = 0.0;
+		// param->im = 0.0;
+		param->re = -0.742;
+		param->im = 0.1;
+		// return (1);
+	}
+	else
+	{
+		return (0);
+	}
+	return (1);
 }
