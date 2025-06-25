@@ -34,11 +34,11 @@
 # define JULIA 2
 # define BURNING_SHIP 3
 
-// # define ESC 65307
-// # define RIGHT 65363
-// # define UP 65362
-// # define DOWN 65364
-// # define LEFT 65361
+# define ESC 65307
+# define RIGHT 65363
+# define UP 65362
+# define DOWN 65364
+# define LEFT 65361
 
 # define CLICK 1
 # define RIGHT_CLICK 2
@@ -46,11 +46,11 @@
 # define SCROLL_DOWN 5
 
 // Mac 用（必要に応じて有効化）
-# define ESC 53
-# define RIGHT 124
-# define UP 125
-# define DOWN 126
-# define LEFT 123
+// # define ESC 53
+// # define RIGHT 124
+// # define UP 125
+// # define DOWN 126
+// # define LEFT 123
 
 /* ========================== */
 /*         Prototypes         */
