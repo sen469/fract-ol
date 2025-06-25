@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 08:40:33 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 18:09:08 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/25 13:06:48 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ int	is_set(char **av, t_data *d, int ac, t_comp *param)
 		d->fractal_type = JULIA;
 		param->re = ft_atof(av[2]);
 		param->im = ft_atof(av[3]);
-		printf("param->re = %.4e, param->im = %.4e\n", param->re, param->im);
+		// printf("param->re = %.4e, param->im = %.4e\n", param->re, param->im);
 	}
 	else if (ac == 2 && !ft_strcmp(av[1], "julia"))
 	{
 		d->fractal_type = JULIA;
-		param->re = 0.0;
-		param->im = 0.0;
+		// param->re = 0.0;
+		// param->im = 0.0;
 	}
 	else if (ac == 2 && !ft_strcmp(av[1], "burning_ship"))
 		d->fractal_type = BURNING_SHIP;

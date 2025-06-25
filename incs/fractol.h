@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/24 23:01:33 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/25 13:02:48 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,23 @@
 # define JULIA 2
 # define BURNING_SHIP 3
 
-# define ESC 65307
-# define RIGHT 65363
-# define UP 65362
-# define DOWN 65364
-# define LEFT 65361
+// # define ESC 65307
+// # define RIGHT 65363
+// # define UP 65362
+// # define DOWN 65364
+// # define LEFT 65361
 
 # define CLICK 1
+# define RIGHT_CLICK 2
 # define SCROLL_UP 4
 # define SCROLL_DOWN 5
 
 // Mac 用（必要に応じて有効化）
-// # define ESC 53
-// # define RIGHT 124
-// # define UP 126
-// # define DOWN 125
-// # define LEFT 123
+# define ESC 53
+# define RIGHT 124
+# define UP 125
+# define DOWN 126
+# define LEFT 123
 
 /* ========================== */
 /*         Prototypes         */
@@ -69,10 +70,11 @@ void			mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian);
 /* ---------- Input Handling ---------- */
 int				on_key(int keycode, void *param);
 int				on_scroll(int button, int x, int y, void *param);
-int				close_window(void *param);
+int				on_close(void *param);
 void			zoom(int x, int y, t_fractol *fractol);
 void			skip(int x, int y, t_point *point);
 int				is_keycode(int keycode);
+int				on_mouse_move(int x, int y, void *param);
 
 /* ---------- Complex Number Utils ---------- */
 t_comp			comp_multiple(t_comp a, t_comp b);

@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:11:32 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/24 13:37:27 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/25 12:59:20 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ typedef struct s_fractol
 	// 再描画が必要かどうか
 	int		need_redraw;
 	t_comp	param;
+	int		move;
 }	t_fractol;
 
 #endif

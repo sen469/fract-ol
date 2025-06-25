@@ -17,7 +17,6 @@ double	ft_atof(const char *str)
 	double	i;
 	double	res;
 	int		sign;
-	char	c;
 
 	i = 0.1;
 	sign = 1;

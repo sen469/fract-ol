@@ -1,20 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_window.c                                     :+:      :+:    :+:   */
+/*   on_mouse_move.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 18:38:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/24 18:38:47 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/25 12:56:32 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/25 13:04:40 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "struct.h"
 
-int	close_window(void *param)
+int	on_mouse_move(int x, int y, void *param)
 {
-	(void)param;
-	exit(0);
+	t_fractol	*fractol;
+
+	fractol = (t_fractol *)param;
+	if (fractol->move && fractol->data.fractal_type == JULIA)
+	{
+		// printf("x = %d, y = %d\n", x, y);
+		fractol->param = fractol->fractal_values[x][y].pos;
+		fractol->need_redraw = 1;
+	}
 	return (0);
 }

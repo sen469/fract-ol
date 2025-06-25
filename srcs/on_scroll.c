@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/23 18:51:45 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/23 19:04:47 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/25 13:02:25 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	on_scroll(int button, int x, int y, void *param)
 
 	fractol = (t_fractol *)param;
 	fractol->need_redraw = 1;
+	// printf("button = %d\n", button);
 	if (button == SCROLL_UP)
 	{
 		fractol->point.zoom *= 1.1;
@@ -30,6 +31,16 @@ int	on_scroll(int button, int x, int y, void *param)
 	}
 	else if (button == CLICK)
 		skip(x, y, &fractol->point);
+	else if (button == RIGHT_CLICK)
+	{
+		fractol->move ^= 1;
+		/*
+		if (fractol->move)
+			write(1, "ON\n", 3);
+		else
+			write(1, "OFF\n", 4);
+		*/
+	}
 	else
 	{
 		fractol->need_redraw = 0;
