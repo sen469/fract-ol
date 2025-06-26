@@ -34,6 +34,8 @@
 # define JULIA 2
 # define BURNING_SHIP 3
 
+# define MAX_ITER 60
+
 # define ESC 65307
 # define RIGHT 65363
 # define UP 65362

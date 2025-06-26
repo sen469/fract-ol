@@ -14,6 +14,7 @@
 
 void	judge(t_fractol *fractol)
 {
-		array_init(fractol->fractal_values, &fractol->point, fractol->data.fractal_type);
-		draw(&fractol->data, fractol->fractal_values, &fractol->param);
+	array_init(fractol->fractal_values, &fractol->point, \
+				fractol->data.fractal_type);
+	draw(&fractol->data, fractol->fractal_values, &fractol->param);
 }

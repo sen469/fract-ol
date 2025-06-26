@@ -20,7 +20,6 @@ int	on_mouse_move(int x, int y, void *param)
 	fractol = (t_fractol *)param;
 	if (fractol->move && fractol->data.fractal_type == JULIA)
 	{
-		// printf("x = %d, y = %d\n", x, y);
 		fractol->param = fractol->fractal_values[x][y].pos;
 		fractol->need_redraw = 1;
 	}

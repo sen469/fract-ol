@@ -18,7 +18,6 @@ int	on_scroll(int button, int x, int y, void *param)
 
 	fractol = (t_fractol *)param;
 	fractol->need_redraw = 1;
-	// printf("button = %d\n", button);
 	if (button == SCROLL_UP)
 	{
 		fractol->point.zoom *= 1.1;
@@ -32,15 +31,7 @@ int	on_scroll(int button, int x, int y, void *param)
 	else if (button == CLICK)
 		skip(x, y, &fractol->point);
 	else if (button == RIGHT_CLICK)
-	{
 		fractol->move ^= 1;
-		/*
-		if (fractol->move)
-			write(1, "ON\n", 3);
-		else
-			write(1, "OFF\n", 4);
-		*/
-	}
 	else
 	{
 		fractol->need_redraw = 0;

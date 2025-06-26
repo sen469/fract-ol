@@ -12,44 +12,81 @@
 
 #include "fractol.h"
 
+int	get_sign(const char **str)
+{
+	int	sign;
+
+	sign = 1;
+	while (**str == '+' || **str == '-')
+	{
+		if (**str == '-')
+			sign *= -1;
+		(*str)++;
+	}
+	return (sign);
+}
+
+double	get_integer_part(const char **str)
+{
+	double	res;
+
+	res = 0.0;
+	while (ft_isdigit(**str))
+		res = res * 10 + (*((*str)++) - '0');
+	return (res);
+}
+
+double	get_decimal_part(const char **str)
+{
+	double	res;
+	double	dec;
+
+	res = 0.0;
+	dec = 0.1;
+	if (**str == '.')
+	{
+		(*str)++;
+		while (ft_isdigit(**str))
+		{
+			res += (*((*str)++) - '0') * dec;
+			dec *= 0.1;
+		}
+	}
+	return (res);
+}
+
+double	apply_exponent(const char **str, double res)
+{
+	int	exp;
+
+	if (**str == 'e' || **str == 'E')
+	{
+		(*str)++;
+		exp = ft_atoi(*str);
+		while (exp < 0)
+		{
+			res /= 10;
+			exp++;
+		}
+		while (exp > 0)
+		{
+			res *= 10;
+			exp--;
+		}
+	}
+	return (res);
+}
+
 double	ft_atof(const char *str)
 {
-	double	i;
-	double	res;
-	int		sign;
+	const char	*p;
+	int			sign;
+	double		res;
 
-	i = 0.1;
-	sign = 1;
-	while (*str && (*str == '+' || *str == '-'))
-	{
-		if (*(str++) == '-')
-			sign *= (-1);
-	}
-	res = ft_atoi(str);
-	while (*str != '.')
-		str++;
-	if (*str == '.')
-	{
-		while (ft_isdigit(*(++str)))
-		{
-			res += ((*str) - '0') * i;
-			i /= 10;
-		}
-	}
-	else if (*str == 'e' || *str == 'E')
-	{
-		i = ft_atoi(++str);
-		if (i < 0)
-		{
-			while (i++)
-				res /= 10;
-		}
-		else
-		{
-			// else がいらない説ある
-			while (i--)
-				res *= 10;
-		}
-	}
+	p = str;
+	sign = get_sign(&p);
+	res = get_integer_part(&p);
+	res += get_decimal_part(&p);
+	res = apply_exponent(&p, res);
 	return (sign * res);
 }
