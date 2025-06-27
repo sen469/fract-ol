@@ -6,13 +6,13 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 19:28:57 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/24 13:31:01 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:54:52 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	array_init(t_val arr[HEIGHT][WIDTH], t_point *point, int type)
+void	array_init(t_val **arr, t_point *point, int type)
 {
 	int	i;
 	int	j;

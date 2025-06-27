@@ -6,17 +6,17 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 21:34:09 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/27 15:33:24 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:55:10 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "struct.h"
 
-static void	my_cal(t_val arr[HEIGHT][WIDTH], \
+static void	my_cal(t_val **arr, \
 						int fractal_type, t_comp *param);
 
-void	draw(t_data *data, t_val arr[HEIGHT][WIDTH], t_comp *param)
+void	draw(t_data *data, t_val **arr, t_comp *param)
 {
 	my_cal(arr, data->fractal_type, param);
 	mapping(data, arr, data->endian);
@@ -58,7 +58,7 @@ static void	process(t_val *pos, int type, t_comp *param)
 	}
 }
 
-static void	my_cal(t_val arr[HEIGHT][WIDTH], int fractal_type, t_comp *param)
+static void	my_cal(t_val **arr, int fractal_type, t_comp *param)
 {
 	int	i;
 	int	j;

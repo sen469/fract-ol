@@ -6,13 +6,13 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/20 20:16:27 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/20 20:35:27 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:55:17 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void	mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian)
+void	mapping(t_data *data, t_val **arr, int endian)
 {
 	unsigned int	i;
 	unsigned int	j;

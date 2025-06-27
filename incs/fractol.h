@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/27 15:34:04 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:54:33 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@
 int				is_set(char **s, t_data *d, int ac, t_comp *param);
 void			mlx_setup(t_data *d);
 void			point_init(t_point *point);
-void			array_init(t_val arr[HEIGHT][WIDTH], t_point *point, int type);
+void			array_init(t_val **arr, t_point *point, int type);
 
 /* ---------- Fractal Drawing ---------- */
 void			judge(t_fractol *fractol);
-void			draw(t_data *data, t_val arr[HEIGHT][WIDTH], t_comp *param);
-void			mapping(t_data *data, t_val arr[HEIGHT][WIDTH], int endian);
+void			draw(t_data *data, t_val **arr, t_comp *param);
+void			mapping(t_data *data, t_val **arr, int endian);
 
 /* ---------- Input Handling ---------- */
 int				on_key(int keycode, void *param);
@@ -88,5 +88,8 @@ double			comp_abs(t_comp val);
 /* ---------- Misc Utilities ---------- */
 double			ft_atof(const char *str);
 unsigned int	get_psychedelic_color(t_val *v, int endian);
+void			free_array(t_val **arr);
+t_val			**malloc_array(void);
+void			free_array(t_val **arr);
 
 #endif

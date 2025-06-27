@@ -6,11 +6,12 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:18:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/27 15:33:34 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:56:02 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include <stdlib.h>
 
 int	main(int ac, char **av)
 {
@@ -23,6 +24,7 @@ int	main(int ac, char **av)
 	fractol.move = 0;
 	fractol.param.re = 0;
 	fractol.param.im = 0;
+	fractol.fractal_values = malloc_array();
 	if (!is_set(av, &fractol.data, ac, &fractol.param))
 	{
 		write(1, "mandelbrot julia\n", 17);
@@ -34,8 +36,9 @@ int	main(int ac, char **av)
 	mlx_key_hook(fractol.data.win_ptr, on_key, &fractol);
 	mlx_mouse_hook(fractol.data.win_ptr, on_scroll, &fractol);
 	mlx_loop_hook(fractol.data.mlx_ptr, loop_update, &fractol);
-	mlx_hook(fractol.data.win_ptr, 17, 0, on_close, NULL);
+	mlx_hook(fractol.data.win_ptr, 17, 0, on_close, &fractol);
 	mlx_hook(fractol.data.win_ptr, 6, 1L << 6, on_mouse_move, &fractol);
 	mlx_loop(fractol.data.mlx_ptr);
+	free_array(fractol.fractal_values);
 	return (0);
 }

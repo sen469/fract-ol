@@ -20,7 +20,10 @@ int	on_key(int keycode, void *param)
 	fractol = (t_fractol *)param;
 	fractol->point.pixel = 3.0 / WIDTH / fractol->point.zoom;
 	if (keycode == ESC)
+	{
+		// free_array(fractol->fractal_values);
 		exit(0);
+	}
 	else if (keycode == RIGHT)
 		fractol->point.draw_start.re += 10 * fractol->point.pixel;
 	else if (keycode == LEFT)

@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/24 13:11:32 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/25 12:59:20 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:49:56 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef struct s_fractol
 	// カーソルや、描画のスタート地点座標周りの値を扱う
 	t_point	point;
 	// 各ピクセルの座標平面上の座標w
-	t_val	fractal_values[HEIGHT][WIDTH];
+	t_val	**fractal_values;
 	// 再描画が必要かどうか
 	int		need_redraw;
 	t_comp	param;

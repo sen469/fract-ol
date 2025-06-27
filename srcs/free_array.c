@@ -1,24 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   on_close.c                                         :+:      :+:    :+:   */
+/*   free_array.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/06/24 18:38:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/27 15:53:28 by ssawa            ###   ########.fr       */
+/*   Created: 2025/06/27 15:37:40 by ssawa             #+#    #+#             */
+/*   Updated: 2025/06/27 15:39:13 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 #include "struct.h"
 
-int	on_close(void *param)
+void	free_array(t_val **arr)
 {
-	t_fractol	*fractol;
+	int	i;
 
-	fractol = (t_fractol *)param;
-	free_array(fractol->fractal_values);
-	exit(0);
-	return (0);
+	i = 0;
+	while (i < HEIGHT)
+	{
+		if (arr[i] != NULL)
+			free(arr[i]);
+		i++;
+	}
+	free(arr);
 }

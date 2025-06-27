@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 21:22:23 by ssawa             #+#    #+#              #
-#    Updated: 2025/06/27 15:32:15 by ssawa            ###   ########.fr        #
+#    Updated: 2025/06/27 15:56:41 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,7 +26,8 @@ MLX_DIR      = ./incs/mlx/
 #        Compiler Configuration        #
 ########################################
 
-CC          = cc
+# CC          = cc
+CC = clang
 # CFLAGS      = -Wall -Wextra -Werror -O2
 CFLAGS      = -Wall -Wextra -O2
 # LINUX
@@ -60,7 +61,9 @@ SRCS = \
 	srcs/on_close.c \
 	srcs/on_mouse_move.c \
 	srcs/skip.c \
-	srcs/loop_update.c
+	srcs/loop_update.c \
+	srcs/free_array.c \
+	srcs/malloc_array.c
 
 
 
