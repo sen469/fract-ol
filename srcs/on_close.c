@@ -18,7 +18,7 @@ int	on_close(void *param)
 	t_fractol	*fractol;
 
 	fractol = (t_fractol *)param;
-	free_array(fractol->fractal_values);
+	free_array(fractol);
 	exit(0);
 	return (0);
 }

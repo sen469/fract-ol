@@ -21,7 +21,7 @@ int	on_key(int keycode, void *param)
 	fractol->point.pixel = 3.0 / WIDTH / fractol->point.zoom;
 	if (keycode == ESC)
 	{
-		// free_array(fractol->fractal_values);
+		free_array(fractol);
 		exit(0);
 	}
 	else if (keycode == RIGHT)

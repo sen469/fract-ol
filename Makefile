@@ -31,9 +31,9 @@ CC = clang
 # CFLAGS      = -Wall -Wextra -Werror -O2
 CFLAGS      = -Wall -Wextra -O2
 # LINUX
-# MLX_FLAGS = -lXext -lX11 -lm -lbsd
+MLX_FLAGS = -lXext -lX11 -lm -lbsd
 # Mac
-MLX_FLAGS = -framework OpenGL -framework AppKit
+# MLX_FLAGS = -framework OpenGL -framework AppKit
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################

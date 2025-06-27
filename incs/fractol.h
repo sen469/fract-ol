@@ -19,7 +19,7 @@
 # include "libft/libft.h"
 # include "mlx/mlx.h"
 # include "struct.h"
-// # include <stdio.h>
+# include <stdio.h>
 # include <fcntl.h>
 # include <errno.h>
 # include <math.h>
@@ -34,13 +34,12 @@
 # define JULIA 2
 # define BURNING_SHIP 3
 
-# define MAX_ITER 60
 
-// # define ESC 65307
-// # define RIGHT 65363
-// # define UP 65362
-// # define DOWN 65364
-// # define LEFT 65361
+# define ESC 65307
+# define RIGHT 65363
+# define UP 65364
+# define DOWN 65362
+# define LEFT 65361
 
 # define CLICK 1
 # define RIGHT_CLICK 2
@@ -48,11 +47,11 @@
 # define SCROLL_DOWN 5
 
 // Mac 用（必要に応じて有効化）
-# define ESC 53
-# define RIGHT 124
-# define UP 125
-# define DOWN 126
-# define LEFT 123
+// # define ESC 53
+// # define RIGHT 124
+// # define UP 125
+// # define DOWN 126
+// # define LEFT 123
 
 /* ========================== */
 /*         Prototypes         */
@@ -88,8 +87,7 @@ double			comp_abs(t_comp val);
 /* ---------- Misc Utilities ---------- */
 double			ft_atof(const char *str);
 unsigned int	get_psychedelic_color(t_val *v, int endian);
-void			free_array(t_val **arr);
+void			free_array(t_fractol *fractol);
 t_val			**malloc_array(void);
-void			free_array(t_val **arr);
 
 #endif

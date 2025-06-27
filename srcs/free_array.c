@@ -13,10 +13,12 @@
 #include "fractol.h"
 #include "struct.h"
 
-void	free_array(t_val **arr)
+void	free_array(t_fractol *fractol)
 {
 	int	i;
+	t_val	**arr;
 
+	arr = fractol->fractal_values;
 	i = 0;
 	while (i < HEIGHT)
 	{
@@ -24,5 +26,9 @@ void	free_array(t_val **arr)
 			free(arr[i]);
 		i++;
 	}
+	mlx_destroy_image(fractol->data.mlx_ptr, fractol->data.img_ptr);
+	mlx_destroy_window(fractol->data.mlx_ptr, fractol->data.win_ptr);
+	mlx_destroy_display(fractol->data.mlx_ptr);
+	free(fractol->data.mlx_ptr);
 	free(arr);
 }
