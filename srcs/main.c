@@ -6,26 +6,11 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 15:18:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/25 13:08:14 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/06/27 15:33:34 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
-
-static int	loop_update(void *param)
-{
-	t_fractol	*fractol;
-
-	fractol = (t_fractol *)param;
-	if (fractol->need_redraw)
-	{
-		array_init(fractol->fractal_values, &fractol->point, \
-				fractol->data.fractal_type);
-		fractol->need_redraw = 0;
-	}
-	draw(&fractol->data, fractol->fractal_values, &fractol->param);
-	return (0);
-}
 
 int	main(int ac, char **av)
 {
@@ -33,6 +18,7 @@ int	main(int ac, char **av)
 
 	if (ac <= 1)
 		return (0);
+	// 初期化関数を作る
 	fractol.need_redraw = 0;
 	fractol.move = 0;
 	fractol.param.re = 0;

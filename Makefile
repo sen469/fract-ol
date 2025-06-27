@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 21:22:23 by ssawa             #+#    #+#              #
-#    Updated: 2025/06/25 13:01:08 by ssawa            ###   ########.fr        #
+#    Updated: 2025/06/27 15:32:15 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,9 +30,9 @@ CC          = cc
 # CFLAGS      = -Wall -Wextra -Werror -O2
 CFLAGS      = -Wall -Wextra -O2
 # LINUX
-MLX_FLAGS = -lXext -lX11 -lm -lbsd
+# MLX_FLAGS = -lXext -lX11 -lm -lbsd
 # Mac
-# MLX_FLAGS = -framework OpenGL -framework AppKit
+MLX_FLAGS = -framework OpenGL -framework AppKit
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################
@@ -59,7 +59,8 @@ SRCS = \
 	srcs/point_init.c \
 	srcs/on_close.c \
 	srcs/on_mouse_move.c \
-	srcs/skip.c
+	srcs/skip.c \
+	srcs/loop_update.c
 
 
 
