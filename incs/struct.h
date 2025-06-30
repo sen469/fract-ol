@@ -13,8 +13,8 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-# define WIDTH 1600
-# define HEIGHT 1600
+# define WIDTH 800
+# define HEIGHT 800
 # define MAX_ITER 50
 
 typedef struct s_comp
