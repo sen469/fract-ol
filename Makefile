@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 21:22:23 by ssawa             #+#    #+#              #
-#    Updated: 2025/06/27 15:56:41 by ssawa            ###   ########.fr        #
+#    Updated: 2025/08/25 15:00:00 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,20 +20,20 @@ LIBFT       = ./incs/libft/libft.a
 LIBFT_DIR   = ./incs/libft
 
 MLX         = ./incs/mlx/libmlx.a
-MLX_DIR      = ./incs/mlx/
+MLX_DIR     = ./incs/mlx
 
 ########################################
 #        Compiler Configuration        #
 ########################################
 
-# CC          = cc
-CC = clang
-# CFLAGS      = -Wall -Wextra -Werror -O2
-CFLAGS      = -Wall -Wextra -O2
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -O2
 # LINUX
-MLX_FLAGS = -lXext -lX11 -lm -lbsd
+MLX_FLAGS   = -lXext -lX11 -lm -lbsd
+
 # Mac
 # MLX_FLAGS = -framework OpenGL -framework AppKit
+
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
 ########################################
@@ -65,9 +65,6 @@ SRCS = \
 	srcs/free_array.c \
 	srcs/malloc_array.c
 
-
-
-
 BONUS_SRCS = \
 
 OBJS     = $(SRCS:.c=.o)
@@ -91,8 +88,12 @@ bonus: $(NAME)
 $(LIBFT):
 	$(MAKE) -C $(LIBFT_DIR)
 
-# mlxビルド
+# mlxビルド（存在しない場合は自動でgit clone）
 $(MLX):
+	if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "Minilibxが見つかりません。Cloning..."; \
+		git clone git@github.com:42paris/minilibx-linux.git $(MLX_DIR); \
+	fi
 	$(MAKE) -C $(MLX_DIR)
 
 # オブジェクトファイル作成
@@ -102,7 +103,7 @@ $(MLX):
 # オブジェクト削除
 clean:
 	$(MAKE) -C $(LIBFT_DIR) clean
-	# $(MAKE) -C $(MLX_DIR) clean
+	$(MAKE) -C $(MLX_DIR) clean
 	rm -f $(OBJS) $(B_OBJS)
 
 # バイナリ・ライブラリ削除
@@ -122,3 +123,4 @@ run: re
 	./$(NAME) mandelbrot
 
 .PHONY: all bonus clean fclean re
+

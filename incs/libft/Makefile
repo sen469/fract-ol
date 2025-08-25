@@ -49,7 +49,7 @@ BSRCS = ft_lstadd_back_bonus.c \
 OBJS = $(SRCS:.c=.o)
 BOBJS = $(BSRCS:.c=.o)
 
-CC = gcc
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar rcs
 RM = rm -f
