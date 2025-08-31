@@ -109,7 +109,6 @@ clean:
 # バイナリ・ライブラリ削除
 fclean: clean
 	$(MAKE) -C $(LIBFT_DIR) fclean
-	# $(MAKE) -C $(MLX_DIR) fclean
 	rm -f $(NAME)
 
 # 全クリーン&再ビルド
@@ -122,5 +121,7 @@ B_OBJS = $(BONUS_SRCS:.c=.o)
 run: re
 	./$(NAME) mandelbrot
 
+rm_mlx:
+	rm -rf $(MLX_DIR)
 .PHONY: all bonus clean fclean re
 
