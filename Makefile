@@ -28,11 +28,16 @@ MLX_DIR     = ./incs/mlx
 
 CC          = cc
 CFLAGS      = -Wall -Wextra -Werror -O2
-# LINUX
-MLX_FLAGS   = -lXext -lX11 -lm -lbsd
 
-# Mac
-# MLX_FLAGS = -framework OpenGL -framework AppKit
+UNAME_S := $(shell uname -s)
+
+ifeq ($(UNAME_S),Linux)
+	MLX_FLAGS   = -lXext -lX11 -lm -lbsd
+endif
+
+ifeq ($(UNAME_S),Darwin)
+	MLX_FLAGS = -framework OpenGL -framework AppKit
+endif
 
 INCLUDES    = -I./incs -I$(LIBFT_DIR)
 
@@ -90,10 +95,18 @@ $(LIBFT):
 
 # mlxビルド（存在しない場合は自動でgit clone）
 $(MLX):
+ifeq ($(UNAME_S),Linux)
 	if [ ! -d "$(MLX_DIR)" ]; then \
-		echo "Minilibxが見つかりません。Cloning..."; \
+		echo "Minilibxが見つかりません。Cloning Linux版..."; \
 		git clone git@github.com:42paris/minilibx-linux.git $(MLX_DIR); \
 	fi
+endif
+ifeq ($(UNAME_S),Darwin)
+	if [ ! -d "$(MLX_DIR)" ]; then \
+		echo "Minilibxが見つかりません。Cloning mac版..."; \
+		git clone git@github.com:dannywillems/minilibx-mac-osx.git $(MLX_DIR); \
+	fi
+endif
 	$(MAKE) -C $(MLX_DIR)
 
 # オブジェクトファイル作成
