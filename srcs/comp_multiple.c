@@ -12,14 +12,6 @@
 
 #include "fractol.h"
 
-static double	ft_fabs(double x)
-{
-	if (x < 0)
-		return (-x);
-	else
-		return (x);
-}
-
 t_comp	comp_multiple(t_comp a, t_comp b)
 {
 	t_comp	ret;

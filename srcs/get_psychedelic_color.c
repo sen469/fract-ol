@@ -65,7 +65,7 @@ unsigned int	hsv_to_rgb(double h, double s, double v)
 	unsigned int	rgb_val[3];
 
 	c = v * s;
-	x = c * (1 - fabs(fmod(h / 60.0, 2) - 1));
+	x = c * (1 - ft_fabs(ft_fmod(h / 60.0, 2) - 1));
 	m = v - c;
 	if (h < 180)
 	{
