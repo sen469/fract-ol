@@ -50,7 +50,7 @@ int	main(int ac, char **av)
 	}
 	if (!is_set(av, &fractol.data, ac, &fractol.param))
 		err_message();
-	mlx_setup(&fractol.data);
+	mlx_setup(&fractol.data, av[1]);
 	point_init(&fractol.point);
 	judge(&fractol);
 	mlx_key_hook(fractol.data.win_ptr, on_key, &fractol);

@@ -11,11 +11,20 @@
 /* ************************************************************************** */
 
 #include "fractol.h"
+#include "libft.h"
 
-void	mlx_setup(t_data *d)
+void	mlx_setup(t_data *d, char *fractal_name)
 {
+	int	i;
+
+	i = 0;
+	while (fractal_name[i])
+	{
+		fractal_name[i] = ft_toupper(fractal_name[i]);
+		i++;
+	}
 	d->mlx_ptr = mlx_init();
-	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, "HELLO WINDOW");
+	d->win_ptr = mlx_new_window(d->mlx_ptr, WIDTH, HEIGHT, fractal_name);
 	d->img_ptr = mlx_new_image(d->mlx_ptr, WIDTH, HEIGHT);
 	d->addr = mlx_get_data_addr(d->img_ptr, &d->bpp, &d->line_len, &d->endian);
 }

@@ -6,7 +6,7 @@
 #    By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/06/19 21:22:23 by ssawa             #+#    #+#              #
-#    Updated: 2025/08/25 15:00:00 by ssawa            ###   ########.fr        #
+#    Updated: 2025/10/17 21:54:26 by ssawa            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,9 @@ SRCS = \
 	srcs/skip.c \
 	srcs/loop_update.c \
 	srcs/free_array.c \
-	srcs/malloc_array.c
+	srcs/malloc_array.c \
+	srcs/ft_fabs.c \
+	srcs/ft_fmod.c
 
 BONUS_SRCS = \
 
