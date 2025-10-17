@@ -6,7 +6,7 @@
 /*   By: ssawa <ssawa@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 14:26:30 by ssawa             #+#    #+#             */
-/*   Updated: 2025/06/27 15:54:33 by ssawa            ###   ########.fr       */
+/*   Updated: 2025/10/17 21:53:38 by ssawa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@
 
 /* ---------- Init / Setup ---------- */
 int				is_set(char **s, t_data *d, int ac, t_comp *param);
-void			mlx_setup(t_data *d);
+void			mlx_setup(t_data *d, char *str);
 void			point_init(t_point *point);
 void			array_init(t_val **arr, t_point *point, int type);
 
@@ -76,7 +76,7 @@ void			zoom(int x, int y, t_fractol *fractol);
 void			skip(int x, int y, t_point *point);
 int				is_keycode(int keycode);
 int				on_mouse_move(int x, int y, void *param);
-int	loop_update(void *param);
+int				loop_update(void *param);
 
 /* ---------- Complex Number Utils ---------- */
 t_comp			comp_multiple(t_comp a, t_comp b);
@@ -89,5 +89,7 @@ double			ft_atof(const char *str);
 unsigned int	get_psychedelic_color(t_val *v, int endian);
 void			free_array(t_fractol *fractol);
 t_val			**malloc_array(void);
+double			ft_fabs(double x);
+double			ft_fmod(double x, double y);
 
 #endif
